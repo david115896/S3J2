@@ -33,22 +33,52 @@ class Game
 	end
 
 
-	def fight_menu()
-        puts "Quelle action veux-tu effectuer ?"
-        puts " "
-        puts "a - chercher une meilleure arme"
-        puts "s - chercher à se soigner "
-        puts " "
-        puts "attaquer un joueur en vue :"
-	x=0
-	@enemies.each do |player|
-		print "#{x+1} - "
-        	puts player.name
-		x+=1
-	end
-	print ">>"
+	def menu
+        	puts "Quelle action veux-tu effectuer ?"
+	        puts " "
+	        puts "a - chercher une meilleure arme"
+        	puts "s - chercher à se soigner "
+	        puts " "
+	        puts "attaquer un joueur en vue :"
+		x=0
+		@enemies.each do |player|
+			print "#{x+1} - "
+        		puts player.name
+			x+=1
+		end
+		print ">>"
 	end
 	
+	def menu_choice(next_move)
+		if next_move != "a" && next_move != "s"
+                        next_move = next_move.to_i
+                end
+
+                puts next_move
+
+                if next_move == "a"
+                        @human_player.search_weapon
+                elsif next_move == "s"
+			@human_player.search_health_pack
+                elsif next_move.between?(1,@enemies.size) == true
+                        next_move = next_move -1
+                        puts "FIGHT !".green
+                        @human_player.attacks(@enemies[next_move])
+                        print ">>"
+                        if @enemies[next_move].life_points == 0
+                                puts "#{@enemies[next_move].name} est mort".green
+                                kill_player(@enemies[next_move])
+                        else
+                                puts "#{@enemies[next_move].name} a #{@enemies[next_move].life_points} points de vie"
+                        end
+                else
+                        puts "Cette commande n'existe pas ! Fait pas ta flippette et joue !".red
+                end
+		puts ""
+		enemies_attack
+
+	end
+
 	def enemies_attack
 		@enemies.each do |player|
 			puts "Le joueur #{player.name} attaque #{@human_player}".red
