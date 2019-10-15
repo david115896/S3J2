@@ -104,7 +104,6 @@ class Game
 
 	def enemies_attack
 		@enemies_in_sight.each do |player|			#boucle sur l'ensemble des bots en jeu et attaque le joueur
-			puts "Le joueur #{player.name} attaque #{@human_player.name}".red
 			player.attacks(@human_player)
                 end
 		puts "Le joueur #{@human_player.name} a #{@human_player.life_points} points de vie".yellow 
