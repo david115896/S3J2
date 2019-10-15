@@ -115,9 +115,6 @@ class Game
 			puts "--------------------".red
 			puts "La partie est finie".red
                         puts "Loser ! Tu as perdu !".red
-			puts "Malgres ta nullite, il te restait seulement #{@players_Left} adversaires a tuer"
-			puts "Mouahahahahahaha"
-		
 		else
 			puts "---------------------".green
 			puts "La partie est finie".green
