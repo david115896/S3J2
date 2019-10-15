@@ -63,7 +63,8 @@ def version_2
 			else
 			 puts "Cette commande n'existe pas ! Fait pas ta flippette et joue !"
 			end
-			
+			puts ""
+			puts "Les autres joueurs attaquent".red		
 			Player.all_players.each{|player| if player.life_points>0 then player.attacks(user)end }
 			user.show_state
 
@@ -91,4 +92,4 @@ def perform
 	version_2
 end
 
-perform
+perform.red
