@@ -73,7 +73,7 @@ def version_2
 	end
 	
 	if player1.life_points == 0 && player2.life_points == 0 	#une fois que la boucle est termine, on recherche l'equipe gagnante
-		pust "--------------------".green
+		puts "--------------------".green
 		puts "La partie est finie".green
 		puts "BRAVO ! TU AS GAGNE !".green
 	else 								#si l'un des 2 bots a de la vie, cela veut dire que le user n'a plus de vie et a donc perdu
